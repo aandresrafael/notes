@@ -11,24 +11,26 @@ import {
   Segment,
 } from 'semantic-ui-react'
 
-import ListNotes from './ListNotes'
+import FileNodesList from './FileNodesList'
 
-const FixedMenuLayout = () => (
-  <div>
-    <Menu fixed='top' inverted>
-      <Container>
-        <Menu.Item as='a' header>
-          Notes
-        </Menu.Item>
+const FixedMenuLayout = (props) => {
+  return (
+    <div>
+      <Menu fixed='top' inverted>
+        <Container>
+          <Menu.Item as='a' header>
+            Notes
+          </Menu.Item>
+        </Container>
+      </Menu>
+
+      <Container text style={{ marginTop: '7em' }}>
+        <Header as='h1'>Notes App</Header>
+        <Divider />
+        <FileNodesList tree={props.tree}/>
       </Container>
-    </Menu>
-
-    <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>Notes App</Header>
-      <Divider />
-      <ListNotes />
-    </Container>
-  </div>
-)
+    </div>
+  )
+}
 
 export default FixedMenuLayout
