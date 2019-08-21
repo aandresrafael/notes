@@ -94,3 +94,13 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def create_notes(deep, parent)
+  return if deep.zero?
+  new_parent = create(:file_node, name: "folder-#{deep}", file_node_type: 'folder', parent: parent)
+  1.upto(10) do |note_number|
+    create(:file_node, name: "note-#{deep}-#{note_number}", file_node_type: 'file', parent: new_parent)
+  end
+
+  create_notes(deep-1, new_parent)
+end
